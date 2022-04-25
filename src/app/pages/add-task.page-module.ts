@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HomePage } from './home.page';
-import { DateComponentModule } from '../../../projects/today-date/src/lib/adapters/primary/ui/date.component-module';
+import { AddTaskPage } from './add-task.page';
+import { AddTaskComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/add-task.component-module';
 
 @NgModule({ imports: [CommonModule, 
       RouterModule.forChild([
         {
           path: '',
-          component: HomePage,
+          component: AddTaskPage,
         }
       ]),
-  DateComponentModule,
+  AddTaskComponentModule
 ],
-  	declarations: [HomePage],
+  	declarations: [AddTaskPage],
   	providers: [],
   	exports: [] })
-export class HomePageModule {
+export class AddTaskPageModule {
 }
