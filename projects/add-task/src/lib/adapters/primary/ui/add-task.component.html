@@ -1,4 +1,4 @@
-<form [formGroup]="createTask" (ngSubmit)="Submit(createTask)">
+<form [formGroup]="createTask" (ngSubmit)="onCreateTaskSubmited(createTask)">
         <input type="text" formControlName="task" placeholder="Task">
         <input type="submit" value="Submit">
 </form>
