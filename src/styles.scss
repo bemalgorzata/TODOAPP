@@ -5,3 +5,14 @@
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+.btn {
+    background-color: navy;
+
+}
+
+.header {
+    background-color: navy;
+    padding: 8px 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
