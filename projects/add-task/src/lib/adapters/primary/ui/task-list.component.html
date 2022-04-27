@@ -1,3 +1,5 @@
-<div class="list-group border-top border-bottom w-100 py-4">
-    <div class="border-0 d-flex justify-content-between" *ngFor="let task of tasks$ | async"> {{task.task}}
+<div class="container mb-5 mt-3 p-25 m-20 ">
+    <div class="border-top border-bottom w-100 p-4">
+        <div class="border-0 d-flex justify-content-between" *ngFor="let task of tasks$ | async"> {{task.task}}
+        </div>
     </div>

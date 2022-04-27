@@ -1,6 +1,7 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { ADDS_TASK_DTO, AddsTaskDtoPort } from '../../../application/ports/secondary/adds-task.dto-port';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-add-task',
@@ -14,7 +15,7 @@ export class AddTaskComponent {
     task: new FormControl()
   });
 
-  constructor(@Inject(ADDS_TASK_DTO) private _addsTaskDto: AddsTaskDtoPort) {
+  constructor(@Inject(ADDS_TASK_DTO) private _addsTaskDto: AddsTaskDtoPort, private router: Router) {
   }
 
   onCreateTaskSubmited(createTask: FormGroup): void {
@@ -26,6 +27,7 @@ export class AddTaskComponent {
       task: createTask.get('task')?.value,
     });
     this.createTask.reset();
+    this.router.navigate(['/tasks']);
 
   }
 }
