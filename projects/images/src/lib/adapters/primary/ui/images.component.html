@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row" style="margin: 50px; padding: 10px;">
+        <div class="col" *ngFor="let image of images$ | async">
+            <div class="card text-center" style="width: 18rem;">
+                <img [src]="image.imageUrl" class="card-img-top" style=" rounded">
+            </div>
+        </div>
+    </div>
+</div>
