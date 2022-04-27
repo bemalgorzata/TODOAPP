@@ -6,6 +6,7 @@ import { TaskListComponentModule } from '../../../projects/add-task/src/lib/adap
 import { FirebaseTaskServiceModule } from '@add-task';
 import { ImagesComponentModule } from '../../../projects/images/src/lib/adapters/primary/ui/images.component-module';
 import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/adapters/secondary/infrastructure/firebase-images.service-module';
+import { AddTaskComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/add-task.component-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -18,7 +19,8 @@ import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/ad
     ]),
     TaskListComponentModule,
     ImagesComponentModule,
-    FirebaseImagesServiceModule
+    FirebaseImagesServiceModule,
+    AddTaskComponentModule,
   ],
   declarations: [TaskListPage],
   providers: [],
