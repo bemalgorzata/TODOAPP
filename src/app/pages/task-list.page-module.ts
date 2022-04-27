@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TaskListPage } from './task-list.page';
 import { TaskListComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/task-list.component-module';
 import { FirebaseTaskServiceModule } from '@add-task';
+// import { FirebaseTaskServiceModule } from '../../../projects/add-task/src/lib/adapters/secondary/infrastructure/firebase-task.service-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -14,7 +15,7 @@ import { FirebaseTaskServiceModule } from '@add-task';
         component: TaskListPage,
       }
     ]),
-    TaskListComponentModule
+    TaskListComponentModule,
   ],
   declarations: [TaskListPage],
   providers: [],

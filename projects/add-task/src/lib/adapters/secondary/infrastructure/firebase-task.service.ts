@@ -13,10 +13,10 @@ export class FirebaseTaskService implements AddsTaskDtoPort, GetsAllTaskDtoPort 
   }
 
   add(task: Partial<TaskDTO>): void {
-    this._client.collection('tasks').add(task);
+    this._client.collection('tasks-list').add(task);
   }
 
   getAll(criterion: Partial<TaskDTO>): Observable<TaskDTO[]> {
-    return this._client.collection<TaskDTO>('tasks').valueChanges(({ idField: 'id' })).pipe(map((data: TaskDTO[]) => filterByCriterion(data, criterion)));
+    return this._client.collection<TaskDTO>('tasks-list').valueChanges(({ idField: 'id' })).pipe(map((data: TaskDTO[]) => filterByCriterion(data, criterion)));
   }
 }
