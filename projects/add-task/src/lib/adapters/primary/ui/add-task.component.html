@@ -1,4 +1,9 @@
-<form [formGroup]="createTask" (ngSubmit)="onCreateTaskSubmited(createTask)">
-        <input class="p-5 rounded" type="text" formControlName="task" placeholder="Write your task here">
-        <input style="background-color: navy;" class=" p-2 m-2 text-light" type="submit" value="Add task">
-</form>
+<div class="container mb-5 p-25 m-20">
+        <form class="form-floating w-50" [formGroup]="createTask" (ngSubmit)="onCreateTaskSubmited(createTask)">
+                <input class="form-control" type="text" formControlName="task" placeholder="Write your task here"
+                        id="floatingTextarea2" style="height: 100px">
+                <label for="floatingTextarea2">Type your task here:</label>
+                <input class="btn text-white mt-3 m-2" type="submit" value="Add task">
+                <button class="btn text-gray bg-white border-dark mt-3 m-2" routerLink="" role="button">Cancel</button>
+        </form>
+</div>
