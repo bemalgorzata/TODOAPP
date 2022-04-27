@@ -17,6 +17,8 @@ export class FirebaseTaskService implements AddsTaskDtoPort, GetsAllTaskDtoPort 
   }
 
   getAll(criterion: Partial<TaskDTO>): Observable<TaskDTO[]> {
-    return this._client.collection<TaskDTO>('tasks-list').valueChanges(({ idField: 'id' })).pipe(map((data: TaskDTO[]) => filterByCriterion(data, criterion)));
+    return this._client.collection<TaskDTO>('tasks-list')
+      .valueChanges(({ idField: 'id' }))
+      .pipe(map((data: TaskDTO[]) => filterByCriterion(data, criterion)));
   }
 }

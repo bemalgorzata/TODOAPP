@@ -26,5 +26,6 @@ export class AddTaskComponent {
       task: createTask.get('task')?.value,
     });
     this.createTask.reset();
+
   }
 }
