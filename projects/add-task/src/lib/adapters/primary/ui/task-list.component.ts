@@ -14,18 +14,11 @@ export class TaskListComponent {
         private _getsAllTaskDto: GetsAllTaskDtoPort, @Inject(SETS_TASK_DTO) private _setsTaskDto: SetsTaskDtoPort) {
     }
 
-    onTasksChecked(task: TaskDTO): void {
-        if (task.done == true) {
-            this._setsTaskDto.set({
-                task: task.task,
-                done: true,
-            })
-        }
-        if (task.done == false) {
-            this._setsTaskDto.set({
-                task: task.task,
-                done: false,
-            })
-        }
+    onTasksChecked(task: Partial<TaskDTO>): void {
+        this._setsTaskDto.set({
+            done: !task.done,
+            task: task.task,
+            id: task.id,
+        })
     }
 }

@@ -1,13 +1,13 @@
 <div class="container mb-5 mt-3 p-25 m-20 ">
     <div class="form-check-inline d-flex flex-column m-3 " *ngFor="let task of tasks$ | async">
 
-        <div class="text-decoration-line-through" *ngIf="task.done == true">
+        <div class="text-decoration-line-through" *ngIf="task.done">
             <input class="form-check-input rounded-circle" type="checkbox" value="" (change)="onTasksChecked(task)"
                 checked />
             {{ task.task }}
         </div>
 
-        <div *ngIf="task.done == false">
+        <div *ngIf="!task.done">
             <input class="form-check-input hover rounded-circle hover" type="checkbox" value=""
                 (change)="onTasksChecked(task)" />
             {{ task.task }}

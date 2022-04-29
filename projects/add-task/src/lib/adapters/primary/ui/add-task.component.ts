@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 
 export class AddTaskComponent {
   readonly createTask: FormGroup = new FormGroup({
-    task: new FormControl()
+    task: new FormControl(),
+    id: new FormControl(),
   });
 
   constructor(@Inject(ADDS_TASK_DTO) private _addsTaskDto: AddsTaskDtoPort, private router: Router) {
@@ -26,6 +27,7 @@ export class AddTaskComponent {
     this._addsTaskDto.add({
       task: createTask.get('task')?.value,
       done: false,
+      id: createTask.get("id")?.value,
     });
     this.createTask.reset();
     this.router.navigate(['/tasks']);
