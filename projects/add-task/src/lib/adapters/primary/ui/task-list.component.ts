@@ -18,13 +18,13 @@ export class TaskListComponent {
         if (task.done == true) {
             this._setsTaskDto.set({
                 task: task.task,
-                done: task.done,
+                done: true,
             })
         }
         if (task.done == false) {
             this._setsTaskDto.set({
                 task: task.task,
-                done: task.done,
+                done: false,
             })
         }
     }

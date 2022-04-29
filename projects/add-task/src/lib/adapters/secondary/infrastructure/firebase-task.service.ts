@@ -8,6 +8,7 @@ import { GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-al
 import { filterByCriterion } from '@lowgular/shared';
 import { SetsTaskDtoPort } from '../../../application/ports/secondary/sets-task.dto-port';
 
+
 @Injectable()
 export class FirebaseTaskService implements AddsTaskDtoPort, GetsAllTaskDtoPort, SetsTaskDtoPort {
   constructor(private _client: AngularFirestore) {
@@ -24,6 +25,7 @@ export class FirebaseTaskService implements AddsTaskDtoPort, GetsAllTaskDtoPort,
   }
 
   set(task: Partial<TaskDTO>): void {
-    this._client.doc('tasks/' + task.id).update(task);
+    this._client.doc('tasks-list/' + task.id).update(task);
   }
+
 }
