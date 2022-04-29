@@ -22,7 +22,7 @@ import { DateComponentModule } from '../../../projects/today-date/src/lib/adapte
     ImagesComponentModule,
     FirebaseImagesServiceModule,
     AddTaskComponentModule,
-    DateComponentModule
+    DateComponentModule,
   ],
   declarations: [TaskListPage],
   providers: [],

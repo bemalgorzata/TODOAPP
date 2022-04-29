@@ -1,5 +1,34 @@
 <div class="container mb-5 mt-3 p-25 m-20 ">
-    <div class="border-top border-bottom w-100 p-4">
-        <div class="border-0 d-flex justify-content-between" *ngFor="let task of tasks$ | async"> {{task.task}}
+
+    <div class="form-check-inline d-flex flex-column m-3 " *ngFor="let task of tasks$ | async">
+
+        <div class="text-decoration-line-through" *ngIf="task.done == true">
+            <input class="form-check-input rounded-circle border-light border-1 bg-purple" type="checkbox" value=""
+                (change)="onTasksChecked(task)" checked />
+            {{ task.task }}
+        </div>
+
+        <div *ngIf="task.done == false">
+            <input class="form-check-input rounded-circle border-purple border-1 hover" type="checkbox" value=""
+                (change)="onTasksChecked(task)" />
+            {{ task.task }}
         </div>
     </div>
+</div>
+
+
+
+
+<div class="container mb-5 mt-3">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <li><a class="dropdown-item active" href="">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+</div>
