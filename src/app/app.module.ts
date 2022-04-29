@@ -17,13 +17,15 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FirebaseTaskServiceModule } from '@add-task';
 import { AngularFireModule } from '@angular/fire/compat';
+import { DateComponentModule } from '@today-date';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    DateComponentModule,
     RouterModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -38,7 +40,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
-    FirebaseTaskServiceModule
+    FirebaseTaskServiceModule,
   ],
   providers: [
     ScreenTrackingService, UserTrackingService
