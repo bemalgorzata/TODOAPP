@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { TaskDTO } from '../../../application/ports/secondary/task.dto';
 import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-all-task.dto-port';
 import { SETS_TASK_DTO, SetsTaskDtoPort } from '../../../application/ports/secondary/sets-task.dto-port';
@@ -9,6 +9,8 @@ import { REMOVES_TASK_DTO, RemovesTaskDtoPort } from '../../../application/ports
 
 export class TaskListComponent {
     tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll();
+    alert$ = new BehaviorSubject(false);
+
 
     constructor(
         @Inject(GETS_ALL_TASK_DTO)
@@ -21,6 +23,14 @@ export class TaskListComponent {
             task: task.task,
             id: task.id,
         })
+        if (task.done) {
+            this.alert$.next(false);
+        }
+        else {
+            this.alert$.next(true);
+        }
+
+
     }
 
     onTaskRemoveed(taskId: string): void {
