@@ -1,5 +1,15 @@
 <div class="container mb-5 mt-3 p-25 m-20 ">
+
+    <alert type="success" *ngIf="alert$ | async">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer
+            so that you can see how spacing within an alert works with this kind of content.</p>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </alert>
+
     <div class="form-check-inline d-flex flex-column m-3 " *ngFor="let task of tasks$ | async">
+
+
 
         <div class="text-decoration-line-through" *ngIf="task.done">
             <input class="form-check-input rounded-circle" type="checkbox" value="" (change)="onTasksChecked(task)"
@@ -12,13 +22,15 @@
                 (change)="onTasksChecked(task)" />
             {{ task.task }}
         </div>
+
         <div class="dropdown">
             <button class=" position-absolute bottom-0 end-0 btn btn-sm text-white dropdown-toggle" type="button"
                 id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 OOO
             </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                <li><a class="dropdown-item active" (click)="onTaskRemoveed(task.id)" href="">Delete</a></li>
+                <li><a class="dropdown-item active" (click)="onTaskRemoveed(task.id)" routerLink="/tasks">Delete</a>
+                </li>
             </ul>
         </div>
     </div>
