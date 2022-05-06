@@ -1,15 +1,12 @@
-<div class="container mb-5 mt-3 p-25 m-20 ">
+<div class="container mb- mt-3 p-25 ">
 
-    <alert type="success" *ngIf="alert$ | async">
-        <h4 class="alert-heading">Well done!</h4>
-        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer
-            so that you can see how spacing within an alert works with this kind of content.</p>
-        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-    </alert>
+
+    <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}
+        </alert>
+    </div>
 
     <div class="form-check-inline d-flex flex-column m-3 " *ngFor="let task of tasks$ | async">
-
-
 
         <div class="text-decoration-line-through" *ngIf="task.done">
             <input class="form-check-input rounded-circle" type="checkbox" value="" (change)="onTasksChecked(task)"
