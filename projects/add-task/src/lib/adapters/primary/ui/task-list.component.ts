@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject, TemplateRef } from '@angular/core';
+import { BehaviorSubject, ConnectableObservable, map, Observable } from 'rxjs';
 import { AlertComponent } from 'ngx-bootstrap/alert';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TaskDTO } from '../../../application/ports/secondary/task.dto';
 import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-all-task.dto-port';
 import { SETS_TASK_DTO, SetsTaskDtoPort } from '../../../application/ports/secondary/sets-task.dto-port';
@@ -9,6 +10,8 @@ import { REMOVES_TASK_DTO, RemovesTaskDtoPort } from '../../../application/ports
 @Component({ selector: 'lib-task-list', templateUrl: './task-list.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 
 export class TaskListComponent {
+    modalRef: any;
+    currentTaskId = '';
     tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll()
         .pipe(map((tasks: TaskDTO[]) =>
             tasks.sort((a, b) => a.created - b.created)))
@@ -21,8 +24,10 @@ export class TaskListComponent {
     }
 
     constructor(
-        @Inject(GETS_ALL_TASK_DTO)
-        private _getsAllTaskDto: GetsAllTaskDtoPort, @Inject(SETS_TASK_DTO) private _setsTaskDto: SetsTaskDtoPort, @Inject(REMOVES_TASK_DTO) private _removesTaskDto: RemovesTaskDtoPort) {
+        private modalService: BsModalService,
+        @Inject(GETS_ALL_TASK_DTO) private _getsAllTaskDto: GetsAllTaskDtoPort,
+        @Inject(SETS_TASK_DTO) private _setsTaskDto: SetsTaskDtoPort,
+        @Inject(REMOVES_TASK_DTO) private _removesTaskDto: RemovesTaskDtoPort) {
     }
 
     onTasksChecked(task: Partial<TaskDTO>): void {
@@ -45,7 +50,19 @@ export class TaskListComponent {
         }
     }
 
-    onTaskRemoveed(taskId: string): void {
-        this._removesTaskDto.remove(taskId);
+    onTaskRemoveed(): void {
+        this._removesTaskDto.remove(this.currentTaskId);
+    }
+    openModal(template: TemplateRef<any>, taskId: string) {
+        this.currentTaskId = taskId;
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    }
+
+    confirm(): void {
+        this.modalRef?.hide();
+    }
+
+    decline(): void {
+        this.modalRef?.hide();
     }
 }
