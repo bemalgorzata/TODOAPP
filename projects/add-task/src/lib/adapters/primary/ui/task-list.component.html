@@ -22,7 +22,7 @@
                 id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 OOO
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
                 <li><a class="dropdown-item active" (click)="openModal(template, task.id)">Delete</a>
                 </li>
             </ul>
@@ -32,8 +32,8 @@
     <ng-template #template>
         <div class="modal-body text-center">
             <p>Do you want to delete?</p>
-            <button type="button" class="btn btn-default" (click)="onTaskRemoveed(); confirm()">Delete</button>
-            <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+            <button type="button" class="btn text-white mt-3 m-3" (click)="onTaskRemoveed(); confirm()">Delete</button>
+            <button type="button" class="btn bg-white border-dark mt-3 m-3" (click)="decline()">No</button>
         </div>
     </ng-template>
 

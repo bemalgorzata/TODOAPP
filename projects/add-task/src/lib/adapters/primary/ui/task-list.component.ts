@@ -41,7 +41,7 @@ export class TaskListComponent {
             this.alerts.push({
                 type: 'success',
                 msg: `Well done, you completed your task!`,
-                timeout: 5000
+                timeout: 2500
             })
             this.alert$.next(false);
         }
@@ -55,7 +55,7 @@ export class TaskListComponent {
     }
     openModal(template: TemplateRef<any>, taskId: string) {
         this.currentTaskId = taskId;
-        this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm', });
     }
 
     confirm(): void {
