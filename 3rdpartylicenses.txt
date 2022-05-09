@@ -135,6 +135,18 @@ firebase/storage
 ngx-bootstrap/alert
 MIT
 
+ngx-bootstrap/component-loader
+MIT
+
+ngx-bootstrap/focus-trap
+MIT
+
+ngx-bootstrap/modal
+MIT
+
+ngx-bootstrap/positioning
+MIT
+
 ngx-bootstrap/utils
 MIT
 
